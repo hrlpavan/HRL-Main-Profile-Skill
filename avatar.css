@@ -1,0 +1,158 @@
+/**
+ * HRL Main Profile Skill — Scoped Reusable Circular Avatar Component
+ * Reverse-Engineered from HRL International Knowledge Graph & Profile Systems
+ * Features:
+ *  - 1:1 Aspect ratio locked circular profile container
+ *  - Ambient + Key dual-tier elevation drop shadows
+ *  - High-precision 225° Specular Glass Conic Rim (hardware-accelerated mask)
+ *  - Radial Glass Dome Lens Glare & Dual Inner Specular Bevels
+ *  - Offset Cut-Out Verified Badge with customizable SVG icon
+ */
+
+:root {
+  --avatar-size: 150px;
+  --badge-size: 32px;
+  --badge-bg: #D1002D; /* HRL Crimson */
+  --badge-color: #FFFFFF;
+  --badge-border-color: #FFFFFF;
+  --badge-border-width: 2px;
+  --badge-offset: 2px;
+  --avatar-bg-fallback: #0B0E14;
+  --avatar-shadow-key: 0 16px 36px rgba(0, 0, 0, 0.45);
+  --avatar-shadow-ambient: 0 4px 12px rgba(0, 0, 0, 0.30);
+  --avatar-rim-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  --avatar-rim-thickness: 2px;
+}
+
+/* Master Wrapper Container */
+.hrl-avatar-wrapper {
+  position: relative;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* Base Image Layer */
+.hrl-avatar-wrapper .avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  background-color: var(--avatar-bg-fallback);
+  box-shadow: var(--avatar-shadow-key), var(--avatar-shadow-ambient);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+/* Hover Subtle Lift (Optional Interactive Elevation) */
+.hrl-avatar-wrapper:hover .avatar-img {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.50), 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Specular Glass Conic Rim (Layer 2 - Outer Optical Highlight) */
+.hrl-avatar-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--avatar-rim-thickness));
+  border-radius: 50%;
+  padding: var(--avatar-rim-thickness);
+  background: conic-gradient(
+    from 225deg,
+    rgba(255, 255, 255, 0.95) 0deg,
+    rgba(255, 255, 255, 0.30) 65deg,
+    rgba(255, 255, 255, 0.05) 140deg,
+    rgba(0, 0, 0, 0.40) 180deg,
+    rgba(255, 255, 255, 0.20) 240deg,
+    rgba(255, 255, 255, 0.80) 310deg,
+    rgba(255, 255, 255, 0.95) 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  filter: drop-shadow(var(--avatar-rim-shadow));
+  z-index: 2;
+  transition: opacity 0.25s ease;
+}
+
+/* Internal Specular Bevel & Light Glare (Layer 3 - Glass Lens Effect) */
+.hrl-avatar-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.05) 40%,
+    transparent 65%
+  );
+  box-shadow: 
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.50);
+  z-index: 3;
+}
+
+/* Verified Status Badge (Layer 4 - Bottom-Right Anchor) */
+.hrl-avatar-wrapper .verified-badge {
+  position: absolute;
+  bottom: var(--badge-offset);
+  right: var(--badge-offset);
+  width: var(--badge-size);
+  height: var(--badge-size);
+  border-radius: 50%;
+  background: var(--badge-bg);
+  color: var(--badge-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--badge-border-width) solid var(--badge-border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 4;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hrl-avatar-wrapper .verified-badge:hover {
+  transform: scale(1.1);
+}
+
+.hrl-avatar-wrapper .verified-badge svg {
+  width: calc(var(--badge-size) * 0.5);
+  height: calc(var(--badge-size) * 0.5);
+  display: block;
+}
+
+/* Size Preset Utility Classes */
+.hrl-avatar--sm {
+  --avatar-size: 64px;
+  --badge-size: 18px;
+  --badge-border-width: 1.5px;
+  --badge-offset: 0px;
+}
+
+.hrl-avatar--md {
+  --avatar-size: 96px;
+  --badge-size: 24px;
+  --badge-border-width: 2px;
+  --badge-offset: 1px;
+}
+
+.hrl-avatar--lg {
+  --avatar-size: 150px;
+  --badge-size: 32px;
+  --badge-border-width: 2px;
+  --badge-offset: 2px;
+}
+
+.hrl-avatar--xl {
+  --avatar-size: 200px;
+  --badge-size: 42px;
+  --badge-border-width: 3px;
+  --badge-offset: 4px;
+}
