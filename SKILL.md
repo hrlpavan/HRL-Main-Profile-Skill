@@ -1,6 +1,6 @@
 ---
 name: hrl-main-profile-skill
-description: "Reverse-engineered circular profile avatar component pattern featuring 4 optical depth layers: dual-tier elevation drop shadows, 225° specular glass conic rim, internal convex lens glare bevel, and cut-out anchored verified badge. Supports Pure HTML/CSS, Tailwind CSS v3/v4, and React/TypeScript."
+description: "Reverse-engineered circular profile avatar component pattern featuring 4 optical depth layers: dual-tier elevation drop shadows, 225° specular glass conic rim, internal convex lens glare bevel, and cut-out anchored verified badge. Supports Pure HTML/CSS, Tailwind CSS v3/v4, React/TypeScript, and universal role design application."
 ---
 
 # HRL Main Profile Skill — Circular Profile Avatar System
@@ -16,6 +16,14 @@ The component solves circular avatar clipping, directional glass lighting, and h
 2. **Layer 2: Specular Conic Rim (`::before`)**: 225° incident angle conic gradient with CSS `mask-composite: exclude` creating a 2px directional rim highlight.
 3. **Layer 3: Internal Specular Glare (`::after`)**: Convex glass lens effect with top radial light gradient and top/bottom inner shadow bevels (`inset 0 1.5px 2px white`, `inset 0 -1.5px 2px black`).
 4. **Layer 4: Anchored Verified Badge**: Absolute-positioned circular badge at ~4:30 clock position with a 2px solid cut-out border and centered checkmark icon.
+
+## Automated Company Role Application Prompt
+
+To automatically apply this design across company roles, leadership cards, or team directories, use the prompt documented in:
+👉 [`ROLE_AVATAR_APPLICATION_PROMPT.md`](ROLE_AVATAR_APPLICATION_PROMPT.md)
+
+Simply tell your AI assistant:
+> *"Apply the HRL Optical Circular Avatar Design System from `ROLE_AVATAR_APPLICATION_PROMPT.md` across the updated roles in `<target-files>`."*
 
 ## Rapid Usage
 

@@ -4,8 +4,17 @@
 [![CSS3](https://img.shields.io/badge/CSS3-Standard-blue.svg)](avatar.css)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind-v3%20%7C%20v4-38BDF8.svg)](README.md#tailwind-css-v3--v4-snippet)
 [![React](https://img.shields.io/badge/React-18%2B-61DAFB.svg)](Avatar.tsx)
+[![Role Application Prompt](https://img.shields.io/badge/Master%20Prompt-Included-success.svg)](ROLE_AVATAR_APPLICATION_PROMPT.md)
 
 Production-ready, reverse-engineered implementation of the high-contrast circular profile avatar with multi-layer glass optics and an anchored verified status badge, extracted from the **HRL International Canonical Knowledge Graph Profile System**.
+
+---
+
+## ⚡ Direct Copy-Paste Prompt: Apply Across Company Roles
+
+To apply this design system to any company role, leadership directory, or client profile, copy the master prompt from [`ROLE_AVATAR_APPLICATION_PROMPT.md`](ROLE_AVATAR_APPLICATION_PROMPT.md) or issue the following command to any coding agent:
+
+> *"Apply the HRL 4-layer optical circular avatar design pattern (specular conic rim, internal lens glare, elevation drop-shadows, and cut-out verified badge) across the company roles in this project using the specification in `ROLE_AVATAR_APPLICATION_PROMPT.md`."*
 
 ---
 
